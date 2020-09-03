@@ -2,20 +2,20 @@
 
 using namespace std;
 
-void quickSort(int array[8], int fromIndex, int toIndex);
-void printArray(int array[8]);
+void quickSort(int array[9], int fromIndex, int toIndex);
+void swap(int array[9], int firstPosition, int secondPosition);
+void printArray(int array[9]);
 
 int main()
 {
-    int myArray[8] = {1, 4, 5, 1, 3, 4, 2, 6};
-    int myArrayLength = sizeof(myArray) / sizeof(myArray[0]);
+    int myArray[9] = {3, 7, 8, 5, 2, 1, 9, 5, 4};
 
-    quickSort(myArray, 0, 7);
+    quickSort(myArray, 0, 8);
 
     return 0;
 }
 
-void quickSort(int array[8], int fromIndex, int toIndex)
+void quickSort(int array[9], int fromIndex, int toIndex)
 {
 	int countOfMisses = 0;
 	int currentCompareIndex = fromIndex;
@@ -25,18 +25,15 @@ void quickSort(int array[8], int fromIndex, int toIndex)
     {
         if (array[currentCompareIndex] > array[pivotIndex])
         {
-			int tempCurrentFromElement = array[currentCompareIndex];
-			int tempPivotElement = array[pivotIndex];
-			int tempPenultElement = array[pivotIndex - 1];
+			swap(array, pivotIndex, pivotIndex - 1);
 
-			array[pivotIndex - 1] = tempPivotElement;
-			array[pivotIndex] = tempCurrentFromElement;
-			array[currentCompareIndex] = tempPenultElement;
+			if (currentCompareIndex + 1 < pivotIndex)
+				swap(array, currentCompareIndex, pivotIndex);
 
 			pivotIndex--;
         } else {
-			countOfMisses++;
 			currentCompareIndex++;
+			countOfMisses++;
 
 			if (countOfMisses == pivotIndex)
 				pivotIndex--;
@@ -48,13 +45,21 @@ void quickSort(int array[8], int fromIndex, int toIndex)
 	quickSort(array, currentCompareIndex, pivotIndex);
 }
 
-void printArray(int array[8])
+void swap(int array[9], int firstPosition, int secondPosition)
 {
-	for (int i = 0; i < 8; i++)
+	const int tempElement = array[firstPosition];
+
+	array[firstPosition] = array[secondPosition];
+	array[secondPosition] = tempElement;
+}
+
+void printArray(int array[9])
+{
+	for (int i = 0; i < 9; i++)
 	{
 		cout << array[i];
 
-		if (i == 7)
-			cout << " - ";
+		if (i == 8)
+			cout << endl;
 	}
 }

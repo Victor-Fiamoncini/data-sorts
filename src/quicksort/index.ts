@@ -1,3 +1,13 @@
+import swap from '../swap'
+
+export default function main(): void {
+	const myArray = [1, 4, 5, 1, 3, 4, 2, 6]
+
+	quickSort(myArray, 0, myArray.length - 1)
+
+	console.log(`Sorted array: ${myArray.join(', ')}`)
+}
+
 function quickSort(array: number[], fromIndex: number, toIndex: number) {
 	let countOfMisses = 0
 	let currentCompareIndex = fromIndex
@@ -24,34 +34,15 @@ function quickSort(array: number[], fromIndex: number, toIndex: number) {
 
 	const leftArrayFromIndex = 0
 	const leftArrayToIndex = pivotIndex - 1
-	const isLeftPivotArrayNotSorted = leftArrayToIndex > 1
 
-	if (isLeftPivotArrayNotSorted) {
+	if (leftArrayToIndex > 1) {
 		quickSort(array, leftArrayFromIndex, leftArrayToIndex)
 	}
 
 	const rightArrayFromIndex = pivotIndex + 1
 	const rightArrayToIndex = array.length - 1
-	const isRightPivotArrayNotSorted = rightArrayFromIndex < toIndex
 
-	if (isRightPivotArrayNotSorted) {
+	if (rightArrayFromIndex < toIndex) {
 		quickSort(array, rightArrayFromIndex, rightArrayToIndex)
 	}
 }
-
-function swap(array: number[], firstPosition: number, secondPosition: number) {
-	const tempElement = array[firstPosition]
-
-	array[firstPosition] = array[secondPosition]
-	array[secondPosition] = tempElement
-}
-
-function main() {
-	const myArray = [3, 7, 8, 5, 2, 1, 9, 5, 4]
-
-	quickSort(myArray, 0, myArray.length - 1)
-
-	console.log(`Sorted array: ${myArray.join(', ')}`)
-}
-
-main()

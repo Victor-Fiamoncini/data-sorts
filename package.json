@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify ./src/*/**.ts"
+    "dev": "tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify ./index.ts"
   },
   "devDependencies": {
     "@types/node": "^14.11.1",

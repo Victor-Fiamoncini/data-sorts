@@ -1,4 +1,4 @@
-# Data Sorts 👾
+# Data Sorts
 
 Implementations of most famous data-structures sort algorithms, for study purposes only.
 

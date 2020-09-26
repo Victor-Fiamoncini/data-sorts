@@ -2,9 +2,9 @@ import Sort from '@src/Sort'
 
 class InsertionSort extends Sort {
 	public sort(): void {
-		const n = this.array.length
+		const arraySize = this.array.length
 
-		for (let i = 1; i < n; i++) {
+		for (let i = 1; i < arraySize; i++) {
 			const currentElement = this.array[i]
 			let previousKey = i - 1
 

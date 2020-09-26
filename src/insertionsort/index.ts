@@ -1,19 +1,22 @@
-import swap from '../swap'
+import Sort from '@src/Sort'
 
-export default function main(): void {
-	const myArray = [4, 7, 2, 5, 4, 0]
+class InsertionSort extends Sort {
+	public sort(): void {
+		const n = this.array.length
 
-	insertionSort(myArray)
+		for (let i = 1; i < n; i++) {
+			const currentElement = this.array[i]
+			let previousKey = i - 1
 
-	console.log(`Sorted array: ${myArray.join(', ')}`)
-}
+			while (this.array[previousKey] > currentElement && previousKey >= 0) {
+				this.array[previousKey + 1] = this.array[previousKey]
 
-function insertionSort(array: number[]) {
-	array.forEach((_, i) => {
-		array.forEach((_, j) => {
-			if (array[j] > array[i]) {
-				swap(array, i, j)
+				previousKey--
 			}
-		})
-	})
+
+			this.array[previousKey + 1] = currentElement
+		}
+	}
 }
+
+export default InsertionSort

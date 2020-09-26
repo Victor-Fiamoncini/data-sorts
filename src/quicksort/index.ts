@@ -1,48 +1,45 @@
-// import swap from '../swap'
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import Sort from '@src/Sort'
 
-// export default (): void => {
-// 	const myArray = [1, 4, 5, 1, 3, 4, 2, 6]
+class QuickSort extends Sort {
+	public sort(array = this.array, from = 0, to = this.array.length) {
+		let countOfMisses = 0
+		let currentCompareIndex = from
+		let pivotIndex = to
 
-// 	quickSort(myArray, 0, myArray.length - 1)
+		while (pivotIndex > currentCompareIndex) {
+			if (array[currentCompareIndex] > array[pivotIndex]) {
+				this.swap(pivotIndex, pivotIndex - 1)
 
-// 	console.log(`Sorted array: ${myArray.join(', ')}`)
-// }
+				if (currentCompareIndex + 1 < pivotIndex) {
+					this.swap(currentCompareIndex, pivotIndex)
+				}
 
-// function quickSort(array: number[], fromIndex: number, toIndex: number) {
-// 	let countOfMisses = 0
-// 	let currentCompareIndex = fromIndex
-// 	let pivotIndex = toIndex
+				pivotIndex--
+			} else {
+				currentCompareIndex++
+				countOfMisses++
 
-// 	while (pivotIndex > currentCompareIndex) {
-// 		if (array[currentCompareIndex] > array[pivotIndex]) {
-// 			swap(array, pivotIndex, pivotIndex - 1)
+				if (countOfMisses === pivotIndex) {
+					pivotIndex--
+				}
+			}
+		}
 
-// 			if (currentCompareIndex + 1 < pivotIndex) {
-// 				swap(array, currentCompareIndex, pivotIndex)
-// 			}
+		const leftArrayFrom = 0
+		const leftArrayTo = pivotIndex - 1
 
-// 			pivotIndex--
-// 		} else {
-// 			currentCompareIndex++
-// 			countOfMisses++
+		if (leftArrayTo > 1) {
+			this.sort(array, leftArrayFrom, leftArrayTo)
+		}
 
-// 			if (countOfMisses === pivotIndex) {
-// 				pivotIndex--
-// 			}
-// 		}
-// 	}
+		const rightArrayFrom = pivotIndex + 1
+		const rightArrayTo = array.length - 1
 
-// 	const leftArrayFromIndex = 0
-// 	const leftArrayToIndex = pivotIndex - 1
+		if (rightArrayFrom < to) {
+			this.sort(array, rightArrayFrom, rightArrayTo)
+		}
+	}
+}
 
-// 	if (leftArrayToIndex > 1) {
-// 		quickSort(array, leftArrayFromIndex, leftArrayToIndex)
-// 	}
-
-// 	const rightArrayFromIndex = pivotIndex + 1
-// 	const rightArrayToIndex = array.length - 1
-
-// 	if (rightArrayFromIndex < toIndex) {
-// 		quickSort(array, rightArrayFromIndex, rightArrayToIndex)
-// 	}
-// }
+export default QuickSort

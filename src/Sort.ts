@@ -13,8 +13,6 @@ abstract class Sort {
 		this.array[first] = this.array[second]
 		this.array[second] = tempElement
 	}
-
-	public abstract sort(): void
 }
 
 export default Sort

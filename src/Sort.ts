@@ -1,7 +1,7 @@
 abstract class Sort {
 	constructor(protected array: number[]) {}
 
-	public result(): number[] {
+	result(): number[] {
 		console.log(`Sorted array: ${this.array.join(', ')}`)
 
 		return this.array

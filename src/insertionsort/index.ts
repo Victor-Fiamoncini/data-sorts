@@ -1,7 +1,7 @@
 import Sort from '@src/Sort'
 
 class InsertionSort extends Sort {
-	public sort(): void {
+	sort(): void {
 		const arraySize = this.array.length
 
 		for (let i = 1; i < arraySize; i++) {

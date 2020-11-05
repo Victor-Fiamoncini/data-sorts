@@ -1,7 +1,11 @@
 # Data Sorts
 
-Implementations of most famous data-structures sort algorithms, for study purposes only.
+Implementations of most famous data-structures sort algorithms, only for study purposes.
 
-In progress... 🚧
+## Includes:
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Quick Sort
 
 By [Victor B. Fiamoncini](https://github.com/Victor-Fiamoncini) ☕️

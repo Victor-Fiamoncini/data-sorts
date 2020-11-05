@@ -1,7 +1,7 @@
 import Sort from '@src/Sort'
 
 class BubbleSort extends Sort {
-	public sort(): void {
+	sort(): void {
 		const arraySize = this.array.length
 
 		for (let i = 0; i < arraySize - 1; i++) {

@@ -1,44 +1,36 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import Sort from '@src/Sort'
 
 class QuickSort extends Sort {
-	public sort(array = this.array, from = 0, to = this.array.length) {
-		let countOfMisses = 0
-		let currentCompareIndex = from
-		let pivotIndex = to
+	sort(array: number[], start = 0, end = array.length): void {
+		if (start < end) {
+			const pivot = this.partition(array, start, end)
 
-		while (pivotIndex > currentCompareIndex) {
-			if (array[currentCompareIndex] > array[pivotIndex]) {
-				this.swap(pivotIndex, pivotIndex - 1)
+			this.sort(array, start, pivot - 1)
+			this.sort(array, pivot + 1, end)
+		}
+	}
 
-				if (currentCompareIndex + 1 < pivotIndex) {
-					this.swap(currentCompareIndex, pivotIndex)
-				}
+	private partition(array: number[], start: number, end: number) {
+		const pivot = array[end]
+		let i = start
 
-				pivotIndex--
-			} else {
-				currentCompareIndex++
-				countOfMisses++
+		for (let j = start; j < end - 1; j++) {
+			if (array[j] <= pivot) {
+				const tempJ = array[j]
 
-				if (countOfMisses === pivotIndex) {
-					pivotIndex--
-				}
+				array[j] = array[i]
+				array[i] = tempJ
+
+				i++
 			}
 		}
 
-		const leftArrayFrom = 0
-		const leftArrayTo = pivotIndex - 1
+		const tempi = array[i]
 
-		if (leftArrayTo > 1) {
-			this.sort(array, leftArrayFrom, leftArrayTo)
-		}
+		array[i] = array[end]
+		array[end] = tempi
 
-		const rightArrayFrom = pivotIndex + 1
-		const rightArrayTo = array.length - 1
-
-		if (rightArrayFrom < to) {
-			this.sort(array, rightArrayFrom, rightArrayTo)
-		}
+		return i
 	}
 }
 

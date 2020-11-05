@@ -2,7 +2,7 @@
 
 Implementations of most famous data-structures sort algorithms, only for study purposes.
 
-## Includes:
+**Includes**:
 - Bubble Sort
 - Selection Sort
 - Insertion Sort

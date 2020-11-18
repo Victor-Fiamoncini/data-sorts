@@ -1,4 +1,4 @@
-# Data Sorts
+# My Sorts
 
 Implementations of most famous data-structures sort algorithms, only for study purposes.
 
